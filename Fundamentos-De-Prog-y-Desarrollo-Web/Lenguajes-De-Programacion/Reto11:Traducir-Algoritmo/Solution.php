@@ -18,34 +18,23 @@ Ejercicio 11: Traducir algoritmo de arrays asociativos
     "Cali" => "valley"
   );
 
-  $condition = "places south";
+  $condition = "tourism valley";
   echo "The condition is: $condition \n";
-  switch ($condition) {
-    case str_contains($condition, "weather"):
-      foreach ( $weather as $key => $value) {
-        // fuction to compare the value of the array with the condition
-        if ( str_contains($condition, $value)) {
-          echo "The city of $key has a $value weather";
-        } 
-      }
+  $words = explode(" ", $condition);
+  switch ($words[0]) {
+    case "weather" :
+      $city = array_search($words[1], $weather);
+      echo "The city of $city has a $words[1] weather";
       break;
       
-    case str_contains($condition, "places"):
-      foreach ( $places as $key => $value) {
-        // fuction to compare the value of the array with the condition
-        if ( str_contains($condition, $value)) {
-          echo "The city of $key is in the $value";
-        } 
-      }
+    case "places" :
+      $city = array_search($words[1], $places);
+      echo "The city of $city is at $words[1]";
       break;
 
-    case str_contains($condition, "tourism"):
-      foreach ( $turism as $key => $value) {
-        // fuction to compare the value of the array with the condition
-        if ( str_contains($condition, $value)) {
-          echo "The city of $key has a $value tourism";
-        } 
-      }
+    case "tourism" :
+      $city = array_search($words[1], $turism);
+      echo "The city of $city has a $words[1]";
       break;
 
     default:
